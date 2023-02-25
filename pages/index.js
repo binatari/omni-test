@@ -106,7 +106,7 @@ export default function Index() {
               variant="contained"
               onClick={searchFilter}
               color="primary"
-              disabled={!isFiltered}
+              disabled={!isFiltered || loading}
               disableElevation
               sx={{height:'100%', textTransform:'none'}}
               fullWidth
@@ -119,7 +119,7 @@ export default function Index() {
               variant="contained"
               onClick={clearFilter}
               color="primary"
-              disabled={!isFiltered}
+              disabled={!isFiltered || loading}
               disableElevation
               sx={{height:'100%', textTransform:'none'}}
               fullWidth
