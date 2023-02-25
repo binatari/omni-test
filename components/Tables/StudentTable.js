@@ -23,6 +23,8 @@ export default function StudentTable({ rows, tableLoading, isFiltered }) {
   const ref = React.useRef(null);
   const [loading, setLoading] = React.useState(null);
   const [result, setResult] = React.useState({});
+  const [logo, setLogo] = React.useState('');
+  const [profileImage, setProfileImage] = React.useState('');
 
 //programmatically click download button after result is fetched
   const clickElement = async (id) => {
@@ -31,6 +33,8 @@ export default function StudentTable({ rows, tableLoading, isFiltered }) {
       .post(`/viewResult/${id}`)
       .then((res) => {
         setResult(res.data.data);
+        setLogo(res.data.logo);
+        setProfileImage(res.data.profile_picture)
         setTimeout(() => {
           ref.current.children[0].dispatchEvent(
             new MouseEvent("click", {
@@ -170,7 +174,7 @@ export default function StudentTable({ rows, tableLoading, isFiltered }) {
         <div ref={ref} style={{ display: "none" }}>
           <PDFDownloadLink
             className="trash"
-            document={<MyDocument {...result} />}
+            document={<MyDocument {...result} profileImage={profileImage} logo={logo} />}
             fileName="somename.pdf"
           >
             {({ blob, url, loading, error }) =>

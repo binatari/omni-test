@@ -140,7 +140,10 @@ const MyDocument = ({  age,
     result,
     session,
     state,
-    surname,}) => {
+    surname,
+    profileImage,
+    logo
+}) => {
   return (
     <Document>
     <Page size="A4" style={styles.body}>
@@ -151,7 +154,7 @@ const MyDocument = ({  age,
           flexDirection: "row",
         }}
       >
-        <Image src="/Logo.png" style={{ maxHeight: 100 }} />
+        <Image src={logo} style={{ maxHeight: 100 }} />
         <View
           style={{
             maxWidth: "50vw",
@@ -199,7 +202,7 @@ const MyDocument = ({  age,
           </Text>
         </View>
         <View>
-          <Image src="/Passport.png" style={{ maxHeight: 100 }} />
+          <Image src={profileImage} style={{ maxHeight: 100 }} />
         </View>
       </View>
       <View
